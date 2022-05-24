@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "CountTime Page";
+}
+
+@using Nspace = Employee.Models
+
+@model IEnumerable<Nspace.Task>
+@{
+    ViewBag.Title = "Все задачи";
+}
+<script>
+    function deleteTasks(id) {
+        $.ajax({
+            type: "DELETE",
+            url: "/Tasks/Delete/" + id,
+            success: function(){
+                window.location.href = "/Tasks/Index";
+            }
+        })
+    }
+</script>
+<a asp-action="Create">Добавить задачу</a>
+<table class="table">
+    <tr>
+        <td>Название задачи</td>
+        <td>Коментарий</td>
+        <td></td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Comment</td>
+            <td>
+                <a asp-action="Edit" asp-controller="Tasks" asp-route-id="@item.Id">Изменить</a> |
+                <a href="#" onclick="deleteTasks(@item.Id)">Удалить</a>
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "CountTime Page";
+}
+
+@model IEnumerable<Time>
+@{
+    ViewBag.Title = "Все задачи";
+}
+<script>
+    function deleteTime(id) {
+        $.ajax({
+            type: "DELETE",
+            url: "/Times/Delete/" + id,
+            success: function(){
+                window.location.href = "/Times/Index";
+            }
+        })
+    }
+</script>
+<a asp-action="Create">Добавить дэдлайн</a>
+<table class="table">
+    <tr>
+        <td>Название задания</td>
+        <td>Имя сотрудника</td>
+        <td>Дата</td>
+        <td>Время, часы</td>
+        <td></td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Task.Name</td>
+            <td>@item.Employee.Name</td>
+            <td>@item.Date</td>
+            <td>@item.Minutes</td>
+            <td>
+                <a asp-action="Edit" asp-controller="Times" asp-route-id="@item.Id">Изменить</a> |
+                <a href="#" onclick="deleteTime(@item.Id)">Удалить</a>
+            </td>
+        </tr>
+    }
+</table>
