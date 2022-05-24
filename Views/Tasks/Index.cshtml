@@ -15,8 +15,12 @@
             url: "/Tasks/Delete/" + id,
             success: function(){
                 window.location.href = "/Tasks/Index";
+            },
+            error: function (jqXHR) {
+                     alert(jqXHR.responseText);
             }
         })
+
     }
 </script>
 <a asp-action="Create">Добавить задачу</a>

@@ -37,11 +37,11 @@ public class EmployeesController : Controller
     // редактирование
     public async Task<IActionResult> Edit(int id)
     {
-        
-            Employee.Models.Employee employee = await _context.Employees.FindAsync(id);
-            if (employee != null)
-                return View(employee);
-    
+
+        Employee.Models.Employee employee = await _context.Employees.FindAsync(id);
+        if (employee != null)
+            return View(employee);
+
         return NotFound();
     }
     [HttpPost]
@@ -55,22 +55,22 @@ public class EmployeesController : Controller
     [HttpDelete]
     public async Task<IActionResult> Delete(int id)
     {
-       
-            Employee.Models.Employee employee = await _context.Employees.FindAsync(id);
-            if ( _context.Times.Where(p => p.EmployeeId == id).Count() > 0)
-            {
-                return BadRequest("Сотрудник работает над задачей");
-            }
 
-            else
+        Employee.Models.Employee employee = await _context.Employees.FindAsync(id);
+        if (_context.Times.Where(p => p.EmployeeId == id).Count() > 0)
+        {
+            return BadRequest("Сотрудник работает над задачей");
+        }
+
+        else
+        {
+            if (employee != null)
             {
-                if (employee != null)
-                {
                 _context.Employees.Remove(employee);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
-                }
             }
+        }
 
         return NotFound();
     }
