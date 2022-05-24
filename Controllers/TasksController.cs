@@ -58,11 +58,19 @@ public class TasksController : Controller
     public async Task<IActionResult> Delete(int id)
     {
         Employee.Models.Task task = await _context.Tasks.FindAsync(id);
-        if (task != null)
+        if (_context.Times.Where(p => p.TaskId == id).Count() > 0)
         {
-            _context.Tasks.Remove(task);
-            await _context.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return BadRequest("Сотрудник работает над задачей");
+        }
+
+        else
+        {
+            if (task != null)
+            {
+                _context.Tasks.Remove(task);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
         }
         return NotFound();
     }
