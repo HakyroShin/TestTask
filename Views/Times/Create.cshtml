@@ -1,29 +1,29 @@
 @model Time
 @{
-    ViewBag.Title = "Добавление дэдлайна";
+    ViewBag.Title = "Create deadline";
 }
 <form asp-action="create" asp-controller="Times">
     <div class="form-group">
-        <label asp-for="EmployeeId" class="control-label">Сотрудник</label>
+        <label asp-for="EmployeeId" class="control-label">Employees</label>
         <select asp-for="EmployeeId" asp-items="ViewBag.Employees">
-            <option selected="selected" disabled="disabled">Выберите сотрудника</option>
+            <option selected="selected" disabled="disabled">Shoose employee </option>
         </select>
     </div>
      <div class="form-group">
-        <label asp-for="TaskId" class="control-label">Задачи</label>
+        <label asp-for="TaskId" class="control-label">Tasks</label>
         <select asp-for="TaskId" asp-items="ViewBag.Tasks">
-            <option selected="selected" disabled="disabled">Выберите задачу</option>
+            <option selected="selected" disabled="disabled">Shoose task</option>
         </select>
     </div>
     <div class="form-group">
-        <label asp-for="Date" class="control-label">Дата</label>
+        <label asp-for="Date" class="control-label">Date</label>
         <input type="text" asp-for="Date" class="form-control" />
     </div>
     <div class="form-group">
-        <label asp-for="Minutes" class="control-label">Время</label>
+        <label asp-for="Minutes" class="control-label">time</label>
         <input type="text" asp-for="Minutes" class="form-control" />
     </div>
     <div class="form-group">
-        <input type="submit" value="Добавить" class="btn btn-default" />
+        <input type="submit" value="Create" class="btn btn-default" />
     </div>
 </form>

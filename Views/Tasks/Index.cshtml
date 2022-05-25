@@ -6,7 +6,7 @@
 
 @model IEnumerable<Nspace.Task>
 @{
-    ViewBag.Title = "Все задачи";
+    ViewBag.Title = "All tasks";
 }
 <script>
     function deleteTasks(id) {
@@ -23,11 +23,11 @@
 
     }
 </script>
-<a asp-action="Create">Добавить задачу</a>
+<a asp-action="Create">Create task</a>
 <table class="table">
     <tr>
-        <td>Название задачи</td>
-        <td>Коментарий</td>
+        <td>Name task</td>
+        <td>Comments</td>
         <td></td>
     </tr>
     @foreach (var item in Model)
@@ -36,8 +36,8 @@
             <td>@item.Name</td>
             <td>@item.Comment</td>
             <td>
-                <a asp-action="Edit" asp-controller="Tasks" asp-route-id="@item.Id">Изменить</a> |
-                <a href="#" onclick="deleteTasks(@item.Id)">Удалить</a>
+                <a asp-action="Edit" asp-controller="Tasks" asp-route-id="@item.Id">Edit</a> |
+                <a href="#" onclick="deleteTasks(@item.Id)">Delete</a>
             </td>
         </tr>
     }

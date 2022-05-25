@@ -59,7 +59,7 @@ public class EmployeesController : Controller
         Employee.Models.Employee employee = await _context.Employees.FindAsync(id);
         if (_context.Times.Where(p => p.EmployeeId == id).Count() > 0)
         {
-            return BadRequest("Сотрудник работает над задачей");
+            return BadRequest("Employee working on a task");
         }
 
         else

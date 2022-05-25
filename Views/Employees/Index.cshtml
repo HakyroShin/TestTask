@@ -4,7 +4,7 @@
 
 @model IEnumerable<Employee>
 @{
-    ViewBag.Title = "Все сотрудники";
+    ViewBag.Title = "All emploees";
 }
 <script>
     function deleteEmployee(id) {
@@ -20,11 +20,11 @@
         })
     }
 </script> 
-<a asp-action="Create">Добавить сотрудника</a>
+<a asp-action="Create">Create employee</a>
 <table class="table">
     <tr>
-        <td>Имя</td>
-        <td>Телефон</td>
+        <td>Name</td>
+        <td>Phone</td>
         <td>Email</td>
         <td></td>
     </tr>
@@ -35,8 +35,8 @@
             <td>@item.Phone</td>
             <td>@item.Email</td>
             <td>
-                <a asp-action="Edit" asp-controller="Employees" asp-route-id="@item.Id">Изменить</a> |
-                <a href="#" onclick="deleteEmployee(@item.Id)">Удалить</a>
+                <a asp-action="Edit" asp-controller="Employees" asp-route-id="@item.Id">Edit</a> |
+                <a href="#" onclick="deleteEmployee(@item.Id)">Delete</a>
             </td>
         </tr>
     }
