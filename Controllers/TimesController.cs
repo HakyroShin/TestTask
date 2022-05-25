@@ -101,7 +101,7 @@ public class TimesController : Controller
             foreach (Employee.Models.Employee e in _context.Employees.ToList())
             {
                 int sum = 0;
-                report.Minutes = 0;
+                
                 
                 foreach (Employee.Models.Time ta in _context.Times.Where(p => p.TaskId == t.Id && p.EmployeeId == e.Id && p.Date >= startday && p.Date <= endday))
                 {
